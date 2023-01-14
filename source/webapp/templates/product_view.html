@@ -1,0 +1,49 @@
+
+{% extends 'partial/base.html' %}
+
+{% block nav %}
+    {% if request.user.is_authenticated %}
+    <li class="nav-item">
+          <a class="nav-link" href="{% url 'webapp:create' %}">Add Product</a>
+    </li>
+     {% if perms.webapp.change_product or product.users == request.user %}
+    <li class="nav-item">
+           <a class="nav-link" href="{% url 'webapp:update' product.pk %}">Update</a>
+    </li>
+    {% endif %}
+    {% if perms.webapp.delete_product  or product.users == request.user %}
+    <li class="nav-item">
+          <a class="nav-link" href="{% url 'webapp:delete' product.pk %}">Delete</a>
+    </li>
+     {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="card text-center pt-3">
+      <div class="card-header">
+          <h2>
+              {{ product.title}}
+          </h2>
+
+
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">{{ product.description }}</h5>
+      {% if user.profile.img %}
+        <div class="col-md-4">
+          <img src="{{ user_obj.profile.img.url }}" class="img-fluid rounded-start" alt="...">
+        </div>
+          {% endif %}
+         <p> {{ reviews.text }}</p>
+
+         <div class="card-footer text-muted fs-4 ">
+                 {{ product.category }}
+          </div>
+
+
+      </div>
+    {% endblock %}

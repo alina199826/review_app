@@ -1,0 +1,38 @@
+
+{% extends 'partial/base.html' %}
+{% block nav %}
+    {% if user_obj.pk == request.user.pk %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'accounts:change' %}">Edit </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'accounts:password_change' user_obj.pk %}">Change Password</a>
+    </li>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h1>Личная страница пользователя {{ user_obj.get_full_name|default:user_obj.username }}</h1>
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+     {% if user_obj.profile.avatar %}
+    <div class="col-md-4">
+      <img src="{{ user_obj.profile.avatar.url }}" class="img-fluid rounded-start" alt="...">
+    </div>
+      {% endif %}
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Username: {{ user_obj.username }}</h5>
+            <p class="card-text">Name: {{ user_obj.last_name }}</p>
+        <p class="card-text">Last name: {{ user_obj.last_name }}</p>
+
+
+
+        <p class="card-text">email: {{ user_obj.email }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

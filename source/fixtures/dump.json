@@ -1,0 +1,45 @@
+[
+{
+    "model": "webapp.product",
+    "pk": 1,
+    "fields": {
+        "title": "prodcut 1",
+        "category": "pharmacy",
+        "description": "text",
+        "img": ""
+    }
+},
+{
+    "model": "webapp.product",
+    "pk": 2,
+    "fields": {
+        "title": "product 3",
+        "category": "food",
+        "description": "text",
+        "img": ""
+    }
+},
+{
+    "model": "webapp.product",
+    "pk": 3,
+    "fields": {
+        "title": "product 3",
+        "category": "other",
+        "description": "text",
+        "img": "user_avatar/1472042660_10.jpg"
+    }
+},
+{
+    "model": "webapp.review",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "product": 2,
+        "text": "rev text",
+        "rating": 2.0,
+        "modern": true,
+        "created_at": "2023-01-14T07:35:04.745Z",
+        "updated_at": "2023-01-14T07:35:04.745Z"
+    }
+}
+]
